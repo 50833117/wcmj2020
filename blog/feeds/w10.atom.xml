@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>50833117 WCMJ2020 網路日誌 - W10</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/w10.atom.xml" rel="self"></link><id>./</id><updated>2020-05-22T03:00:00+08:00</updated><entry><title>2020 WCMJ-2020-W10-課程簡介</title><link href=".%5C2020-Win10-W10.html" rel="alternate"></link><published>2020-05-22T03:00:00+08:00</published><updated>2020-05-22T03:00:00+08:00</updated><author><name>50833117</name></author><id>tag:None,2020-05-22:.\2020-Win10-W10.html</id><summary type="html">&lt;p&gt;以 SSH 維護倉&lt;/p&gt;
+&lt;p&gt;由於在電腦教室時採用純 IPv6 協定上網, 因此為了能夠在近端將倉儲改版資料推送到目前只接受 IPv4 協定連線的 github, 以下除了將原本以 https 對 github 連線, 改為以 ssh 協定連線外, 在 Windows 環境下必須利用 putty 與 plink, 設定 putty 格式的 .ppk 以及能夠同時支援 IPv4 與 IPv6 的代理主機.&lt;/p&gt;
+&lt;p&gt;設定步驟如下:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下載 Putty 工具組&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;從 https://www.chiark.greenend.org.uk/~sgtatham/putty/ 下載一般版, 或從 http://jakub …&lt;/p&gt;</summary><content type="html">&lt;p&gt;以 SSH 維護倉&lt;/p&gt;
+&lt;p&gt;由於在電腦教室時採用純 IPv6 協定上網, 因此為了能夠在近端將倉儲改版資料推送到目前只接受 IPv4 協定連線的 github, 以下除了將原本以 https 對 github 連線, 改為以 ssh 協定連線外, 在 Windows 環境下必須利用 putty 與 plink, 設定 putty 格式的 .ppk 以及能夠同時支援 IPv4 與 IPv6 的代理主機.&lt;/p&gt;
+&lt;p&gt;設定步驟如下:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下載 Putty 工具組&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;從 https://www.chiark.greenend.org.uk/~sgtatham/putty/ 下載一般版, 或從 http://jakub.kotrla.net/putty/ 下載特殊的可攜版本.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;利用 y:\portablegit\bin\sh.exe 進入 shell 命令環境後, 以 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;1
+ssh-keygen -t rsa -b 4096 -C "使用者學號"
+在 /y/home/.ssh 目錄下建立 id_rsa 與 id_rsa.pub 等 private key 與 public key&lt;/p&gt;
+&lt;p&gt;之後以 SciTE 開啟 id_rsa.pub 後, 將此 public key 的內容, 以新增添加到 Github.com 帳號下 personal settings -&amp;gt; SSH and GPG keys 頁面下.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;接下來要利用 puttygen.exe 將 id_rsa 轉為 Putty 可以解讀的 .ppk 格式, 並修改隨身系統的啟動批次檔案, 指定利用 putty 目錄下的 plink 執行 git 指令的網路代理設定.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;修改啟動的 start.bat 加入下列設定:&lt;/p&gt;
+&lt;p&gt;set GIT_HOME=%Disk%:\portablegit\bin\
+set GIT_SSH=%Disk%:\putty\plink.exe
+4. 利用 puttygen.exe 載入第二步驟所建立的 private key, 也就是 id_rsa.&lt;/p&gt;
+&lt;p&gt;開啟 puttygen 之後, 以右下方的 load 載入 id_rsa, 成功載入後, 利用 save private key 按鈕, 將已經轉為 putty 格式的 .ppk 存檔. 此一 .ppk 檔案必須在設定 putty 中 github.com session 時, 在 Connection-&amp;gt;SSH-&amp;gt;Auth 項目下, 將轉檔後的 .ppk 指向 private key file for authentication 欄位. &lt;/p&gt;
+&lt;p&gt;並在 Connection-&amp;gt;Proxy 項目下, 指定 Proxy type: HTTP, 並將 IPv6 代理主機設為 ::53 或 ::42 埠號設為 3128.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;之後確定 home 下的 .ssh 目錄中的 config 設定檔案為；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;no proxy at home&lt;/h1&gt;
+&lt;h1&gt;ProxyCommand y:/PortableGit/mingw64/bin/connect.exe -H proxy.mde.nfu.edu.tw:3128 %h %p&lt;/h1&gt;
+&lt;h1&gt;set git_ssh=y:/putty/plink.exe with auth under putty github.com session setup&lt;/h1&gt;
+&lt;p&gt;ProxyCommand y:/putty/plink.exe github.com %h %p&lt;/p&gt;
+&lt;p&gt;Host github.com
+    User git
+    Port 22
+    Hostname github.com&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="k"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exe&lt;/span&gt; &lt;span class="n"&gt;need&lt;/span&gt; &lt;span class="n"&gt;openssh&lt;/span&gt; &lt;span class="k"&gt;key&lt;/span&gt; &lt;span class="n"&gt;format&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;IdentityFile&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;y:\home\.ssh\id_rsa_mdecourse&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;plink&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exe&lt;/span&gt; &lt;span class="n"&gt;need&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="k"&gt;key&lt;/span&gt; &lt;span class="n"&gt;format&lt;/span&gt; &lt;span class="n"&gt;but&lt;/span&gt; &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="k"&gt;under&lt;/span&gt; &lt;span class="n"&gt;putty&lt;/span&gt; &lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="k"&gt;session&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;plink&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exe&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;need&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;following&lt;/span&gt; &lt;span class="n"&gt;setting&lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;IdentityFile&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;y:\home\.ssh\mdecourse_putty_private.ppk&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;TCPKeepAlive&lt;/span&gt; &lt;span class="n"&gt;yes&lt;/span&gt;
+&lt;span class="n"&gt;IdentitiesOnly&lt;/span&gt; &lt;span class="n"&gt;yes&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;最後再將 wcmj2020 倉儲中 .git 目錄下的 config 檔案中的連線協定, 由 https 改為採 ssh 連線: 範例如下:
+[core]
+    repositoryformatversion = 0
+    filemode = false
+    bare = false
+    logallrefupdates = true
+    symlinks = false
+    ignorecase = true
+[submodule]
+    active = .
+[remote "origin"]
+    #url = https://github.com/mdecourse/wcmj2020.git
+    url = git@github.com:mdecourse/wcmj2020.git
+    fetch = +refs/heads/&lt;em&gt;:refs/remotes/origin/&lt;/em&gt;
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+[submodule "cmsimde"]
+    url = https://github.com/mdecourse/cmsimde.git
+之後就可以透過近端的 .ppk private key 與 Github.com 上的 public key 對應, 無需輸入帳號密碼就可以進行 git push.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;W10 以 ssh 對倉儲連線設定說明影片 (登入 @gm 帳號後觀看)&lt;/p&gt;</content><category term="W10"></category><category term="2020 0522 WCMJ2020W11"></category></entry><entry><title>2020 WCMJ-2020-W10-課程簡介</title><link href=".%5C2020-Win10-W6-W9.html" rel="alternate"></link><published>2020-05-22T03:00:00+08:00</published><updated>2020-05-22T03:00:00+08:00</updated><author><name>50833117</name></author><id>tag:None,2020-05-22:.\2020-Win10-W6-W9.html</id><summary type="html">&lt;p&gt;W6-W9
+Online education
+線上直播: Youtube + Portable OBS&lt;/p&gt;
+&lt;p&gt;線上開會: https://meet.google.com &lt;/p&gt;
+&lt;p&gt;讓手機可以利用電腦熱點上網
+採用 https://www.tp-link.com/us/home-networking/usb-adapter/tl-wn725n/&lt;/p&gt;
+&lt;p&gt;將此一 USB Wifi adapter 連接電腦後, 若網路為 IPv4 協定時, 可以透過"設定 -&amp;gt; 網路和網際網路 -&amp;gt; 行動熱點", 選擇開啟並編輯"網路名稱與網路密碼"後, 讓至多 8 台手機透過熱點連線上網.&lt;/p&gt;
+&lt;p&gt;但是因為目前 Windows 10 並未提供 IPv6 網路協定下的網路熱點功能, 因此在純 IPv6 網路協定下無法使用"行動熱點 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;W6-W9
+Online education
+線上直播: Youtube + Portable OBS&lt;/p&gt;
+&lt;p&gt;線上開會: https://meet.google.com &lt;/p&gt;
+&lt;p&gt;讓手機可以利用電腦熱點上網
+採用 https://www.tp-link.com/us/home-networking/usb-adapter/tl-wn725n/&lt;/p&gt;
+&lt;p&gt;將此一 USB Wifi adapter 連接電腦後, 若網路為 IPv4 協定時, 可以透過"設定 -&amp;gt; 網路和網際網路 -&amp;gt; 行動熱點", 選擇開啟並編輯"網路名稱與網路密碼"後, 讓至多 8 台手機透過熱點連線上網.&lt;/p&gt;
+&lt;p&gt;但是因為目前 Windows 10 並未提供 IPv6 網路協定下的網路熱點功能, 因此在純 IPv6 網路協定下無法使用"行動熱點"服務.&lt;/p&gt;
+&lt;p&gt;利用手機鏡頭當作 webcam:&lt;/p&gt;
+&lt;p&gt;Android: https://www.digitalcitizen.life/turn-android-smartphone-webcam-windows 
+iPhone: https://www.makeuseof.com/tag/use-your-iphone-as-a-webcam-heres-how-ios/ &lt;/p&gt;
+&lt;p&gt;需要 clone 個人倉儲時:
+git clone --recurse-submodules 倉儲_url.git&lt;/p&gt;
+&lt;p&gt;例如: git clone --recurse-submodules https://github.com/mdecourse/wcmj2020.git&lt;/p&gt;</content><category term="W10"></category><category term="2020 0522 WCMJ2020W11"></category></entry></feed>
