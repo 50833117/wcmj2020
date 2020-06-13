@@ -58,15 +58,73 @@
 <h2>網路架構與設定簡介</h2>
 <p>一般網路的架構可以分成防火牆、內部網路、外部網路<br/>防火牆可以想像是內部網路與外部網路的防禦邊界，不同網路間的資料流，可根據防火牆的設定，允許或封鎖特定程式等等<br/>內部網路組織內部進行資訊傳輸及資料轉換的網路區域，因不能直接連接到外部網路，所以安全性較高。<br/>外部網路外部自由傳說的網路區域，因資料傳遞並無受到過濾和限制，所以安全性最低</p>
 <p>win10電腦網路設定用操作表示</p>
+<h1>W10-W11</h1>
+<p>由於在電腦教室時採用純 IPv6 協定上網, 因此為了能夠在近端將倉儲改版資料推送到目前只接受 IPv4 協定連線的 github, 以下除了將原本以 https 對 github 連線, 改為以 ssh 協定連線外, 在 Windows 環境下必須利用 putty 與 plink, 設定 putty 格式的 .ppk 以及能夠同時支援 IPv4 與 IPv6 的代理主機.</p>
+<p>設定步驟如下:</p>
+<p>1. 下載 Putty 工具組</p>
+<p><span>從 </span><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/" rel="nofollow">https://www.chiark.greenend.org.uk/~sgtatham/putty/</a><span><span> </span>下載一般版, 或從<span> </span></span><a href="http://jakub.kotrla.net/putty/" rel="nofollow">http://jakub.kotrla.net/putty/</a><span><span> </span>下載特殊的可攜版本.</span></p>
+<p><span>2. 利用 y:\portablegit\bin\sh.exe 進入 shell 命令環境後, 以 </span></p>
+<div>
+<div class="syntaxhighlighter js" id="highlighter_741087">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="js plain">ssh-keygen -t rsa -b 4096 -C </code><code class="js string">"使用者學號"</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>在 /y/home/.ssh 目錄下建立 id_rsa 與 id_rsa.pub 等 private key 與 public key</p>
+<p>之後以 SciTE 開啟 id_rsa.pub 後, 將此 public key 的內容, 以新增添加到 Github.com 帳號下 personal settings -&gt; SSH and GPG keys 頁面下.</p>
+<p>3. 接下來要利用 puttygen.exe 將 id_rsa 轉為 Putty 可以解讀的 .ppk 格式, 並修改隨身系統的啟動批次檔案, 指定利用 putty 目錄下的 plink 執行 git 指令的網路代理設定.</p>
+<div>
+<div class="syntaxhighlighter js" id="highlighter_662795">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+<div class="line number4 index3 alt1">4</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="js plain">修改啟動的 start.bat 加入下列設定:</code></div>
+<div class="line number2 index1 alt1"> </div>
+<div class="line number3 index2 alt2"><code class="js plain">set GIT_HOME=%Disk%:\portablegit\bin\</code></div>
+<div class="line number4 index3 alt1"><code class="js plain">set GIT_SSH=%Disk%:\putty\plink.exe</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>4. 利用 puttygen.exe 載入第二步驟所建立的 private key, 也就是 id_rsa.</p>
+<p>開啟 puttygen 之後, 以右下方的 load 載入 id_rsa, 成功載入後, 利用 save private key 按鈕, 將已經轉為 putty 格式的 .ppk 存檔. 此一 .ppk 檔案必須在設定 putty 中 github.com session 時, 在 Connection-&gt;SSH-&gt;Auth 項目下, 將轉檔後的 .ppk 指向 private key file for authentication 欄位. </p>
+<p>並在 Connection-&gt;Proxy 項目下, 指定 Proxy type: HTTP, 並將 IPv6 代理主機設為 ::53 或 ::42 埠號設為 3128.</p>
+<p>5. 之後確定 home 下的 .ssh 目錄中的 config 設定檔案</p>
+<p><br/><span>6. 最後再將 wcmj2020 倉儲中 .git 目錄下的 config 檔案中的連線協定, 由 https 改為採 ssh 連線</span></p>
+<p><span>之後就可以透過近端的 .ppk private key 與 Github.com 上的 public key 對應, 無需輸入帳號密碼就可以進行 git push.</span></p>
 <h1>W12-W13</h1>
-
 <p><span>Pelican Blog 內容與 Google Blogger 同步<br/></span></p>
 <p>利用 Windows 10 設定 -&gt; 選擇預設網頁瀏覽器, 使用 Google Chrome 作為預設瀏覽器.</p>
 <p>隨身程式系統必須安裝 <span>google-api-python-client 與 oauth2client</span><br/><br/>pip install google-api-python-client oauth2client<br/><br/>OAuth 2.0 client IDs 程式類別可以選擇 Desktop app<br/><br/>使用者完成 client_secrets.json 設定後, 必須將檔案存在倉儲目錄外部</p>
+<h1>W15-18</h1>
+<p>各組架設另外一個網站，個人去處理好各自得倉儲以及網站</p>
 <p><span> </span></p>
 <div class="yj6qo"></div>
 <div class="adL"></div>
 <div class="hi"></div>
-<div id="gtx-trans" style="position: absolute; left: 4px; top: 4512px;">
+<div id="gtx-trans" style="position: absolute; left: 10px; top: 4512px;">
 <div class="gtx-trans-icon"></div>
 </div>
