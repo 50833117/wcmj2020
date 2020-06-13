@@ -9,16 +9,48 @@
 <p>動態內容編輯完成後, 以 generate_pages 轉為靜態內容, 以 git add commit 及 push 將內容推到遠端.</p>
 <p>4. 之後若要以 git clone 取下包含 submodule 的所有內容, 執行:</p>
 <p>git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p>
+<h1>Develop</h1>
+<p><a data-saferedirecturl="https://www.google.com/url?q=https://github.com/mdecourse/cmsimde&amp;source=gmail&amp;ust=1587801632364000&amp;usg=AFQjCNEn5LOQAqH94CgckTSVT5Tc3URxUA" href="https://github.com/mdecourse/cmsimde" target="_blank">https://github.com/mdecourse/<wbr/>cmsimde</a> 的開發, 可以在一個目錄中放入 cmsimde, 然後將 up_dir 中的內容放到與 cmsimde 目錄同位階的地方, 使用 command 進入 cmsimde 目錄, 執行 python wsgi.py, 就可以啟動, 以瀏覽器<span> </span><a data-saferedirecturl="https://www.google.com/url?q=https://localhost:9443&amp;source=gmail&amp;ust=1587801632364000&amp;usg=AFQjCNGIEn2bJM0rN5kXfbniwodSN9m8rA" href="https://localhost:9443/" target="_blank">https://localhost:9443</a> 就可以連接, 以 admin 作為管理者密碼, 就可以登入維護內容.</p>
+<p>cmsimde 的開發採用 Leo Editor, 開啟 cmsimde 目錄中的 cmsimde.leo 就可以進行程式修改, 結束後, 若要保留網際內容, 只要將 cmsimde 外部的內容倒回 up_dir 目錄中即可後續對 cmsimde 遠端倉儲進行改版.</p>
+<p>init.py 位於  up_dir 目錄, 可以設定 site_title 與 uwsgi 等變數.</p>
+<h1>W1-W2</h1>
+<h2>type of computer</h2>
+<p>1.super computer (超級電腦<span>)    batch computation(</span>批次運算<span>)<br/>2.mainframe<span> </span></span>伺服器主機<span><span> </span>(cluster<span> </span></span>叢集<span>)<br/>3.server<span> </span></span>伺服器<span><span> </span>(</span>實體，虛擬<span>)<br/>4.Personal Computer<br/>5.micro controller (</span>微控制器<span>)  rasberry pi<span> </span></span>樹莓派<span><span> </span>(</span>小<span>PC) embedded<span> </span></span>嵌入式<span><br/>6.Mobile phone (</span>手機<span>)</span></p>
+<h2>課堂補充</h2>
+<p>inter-net(網際<span>,inter+network)==inter-national<br/>protocol(</span>協定<span>)<br/>tcp/ip == transmision control protocol / internet protocol<br/>IPv4 version(</span>版本<span>) 4 IP 4</span>個區段，用「<span>.</span>」隔開<span><br/>IPv6 version 6 IP 8</span>個區段，用「<span>:</span>」隔開<span><br/></span>中華電信<span><span> </span>dns server 2001:b000:168::1<br/>dns == domain name server<span> </span></span>符號名稱伺服器</p>
+<h1>W3-W5</h1>
+<p>開個人網站跟推東西</p>
+<p><span>Y:反/data指的是Y槽的root根目錄  Y指的是Y槽，  &gt;為回應符號(pronpt sign)  反/為backslash反斜線  dir為顯示目錄內容的指令 cd tmp表示change directory到tmp子目錄</span><br/><span>git為分散式版次管理的指令名稱  git clone表示要使用git對遠端的倉儲url進行clone submodule子模組  phthon -m pip install flask-cors</span><br/><span>開個人網站:</span><br/><span>Y:l&gt;cd tmp</span><br/><span>&gt;cd wcmj2020</span><br/><span>&gt;cd cmsimde</span><br/><span>&gt;phthon wsgi.py</span><br/><span>PUSH</span><br/><span>Y:反/TMP反/WCMJ2020&gt;git add.</span><br/><span>&gt;git commit -m "add 添加之東西(可改)"</span><br/><span>&gt;git push</span></p>
+<p></p>
 <h1>W8</h1>
-<p>網管筆記</p>
+<p>試推(網管筆記)</p>
 <p>IPv4 version 4 IP 4個區段，用( . )隔開  IPv6 version 6 IP 8個區段，用( : )隔開               version版本 edition版本</p>
 <p><span>inter-net(網際，inter+network)==inter-national    protocol(協定)   tcp/ip==transmision control protocol/internet protocol       dns==domainname server 符號名稱伺服器               140.130.17.254(系gateway通道)    NAT network address translation   inter network(內部網路)192.168.*   ip address mapping 對應   route 路徑  remote login 遠端登入    packet封包   micor微  life cycle生命週期  microscope顯微鏡   definition定義<br/>tele scope望遠鏡   hierarchy架構  macro巨[比原子(atom)大]  circumstances某種環境下所處的狀態 atomic bomb原子彈 commit提交 terminology術語學 particular特別的 <br/>software軟體 firmware韌體 hardware硬體 assembly組合語言 URL統一資源定位</span></p>
 <p><span>types of computer                                                                                                            1.super computertl 超級電腦  batch computation(批次運算)<br/>2.mainframe伺服器主機(cluster 叢集)<br/>3.server  伺服器  (實體、虛擬)<br/>4.Personal computer<br/>5.micor controller(微控制器) rasberry pi 樹莓派(小PC)  embedded嵌入式<br/>6.mobile phone</span></p>
 <p>Y:反/data指的是Y槽的root根目錄  Y指的是Y槽，  &gt;為回應符號(pronpt sign)  反/為backslash反斜線  dir為顯示目錄內容的指令 cd tmp表示change directory到tmp子目錄<br/>git為分散式版次管理的指令名稱  git clone表示要使用git對遠端的倉儲url進行clone submodule子模組  phthon -m pip install flask-cors<br/>開個人網站:<br/>Y:l&gt;cd tmp<br/>&gt;cd wcmj2020<br/>&gt;cd cmsimde<br/>&gt;phthon wsgi.py<br/>PUSH<br/>Y:反/TMP反/WCMJ2020&gt;git add.<br/>&gt;git commit -m "add 添加之東西(可改)"<br/>&gt;git push</p>
-<h1>Develop</h1>
-<p><a data-saferedirecturl="https://www.google.com/url?q=https://github.com/mdecourse/cmsimde&amp;source=gmail&amp;ust=1587801632364000&amp;usg=AFQjCNEn5LOQAqH94CgckTSVT5Tc3URxUA" href="https://github.com/mdecourse/cmsimde" target="_blank">https://github.com/mdecourse/<wbr/>cmsimde</a> 的開發, 可以在一個目錄中放入 cmsimde, 然後將 up_dir 中的內容放到與 cmsimde 目錄同位階的地方, 使用 command 進入 cmsimde 目錄, 執行 python wsgi.py, 就可以啟動, 以瀏覽器<span> </span><a data-saferedirecturl="https://www.google.com/url?q=https://localhost:9443&amp;source=gmail&amp;ust=1587801632364000&amp;usg=AFQjCNGIEn2bJM0rN5kXfbniwodSN9m8rA" href="https://localhost:9443/" target="_blank">https://localhost:9443</a> 就可以連接, 以 admin 作為管理者密碼, 就可以登入維護內容.</p>
-<p>cmsimde 的開發採用 Leo Editor, 開啟 cmsimde 目錄中的 cmsimde.leo 就可以進行程式修改, 結束後, 若要保留網際內容, 只要將 cmsimde 外部的內容倒回 up_dir 目錄中即可後續對 cmsimde 遠端倉儲進行改版.</p>
-<p>init.py 位於  up_dir 目錄, 可以設定 site_title 與 uwsgi 等變數.<br/><br/></p>
+<h1>W6-W9</h1>
+<h4>Online education</h4>
+<p>線上直播: Youtube + Portable OBS</p>
+<p>線上開會:<span> </span><a href="https://meet.google.com/">https://meet.google.com</a> </p>
+<hr/>
+<h4>讓手機可以利用電腦熱點上網</h4>
+<p>採用 <a href="https://www.tp-link.com/us/home-networking/usb-adapter/tl-wn725n/">https://www.tp-link.com/us/home-networking/usb-adapter/tl-wn725n/</a></p>
+<p>將此一 USB Wifi adapter 連接電腦後, 若網路為 IPv4 協定時, 可以透過"設定 -&gt; 網路和網際網路 -&gt; 行動熱點", 選擇開啟並編輯"網路名稱與網路密碼"後, 讓至多 8 台手機透過熱點連線上網.</p>
+<p>但是因為目前 Windows 10 並<a href="https://answers.microsoft.com/en-us/windows/forum/all/support-ipv6-in-mobile-hotspot-network-sharing/8801ea57-c6dc-4c10-afe6-192879a85835">未提供 IPv6 網路協定下的網路熱點功能</a>, 因此在純 IPv6 網路協定下無法使用"行動熱點"服務.</p>
+<hr/>
+<p>利用手機鏡頭當作 webcam:</p>
+<p>Android:<span> </span><a href="https://www.digitalcitizen.life/turn-android-smartphone-webcam-windows">https://www.digitalcitizen.life/turn-android-smartphone-webcam-windows</a> <br/>iPhone:<span> </span><a href="https://www.makeuseof.com/tag/use-your-iphone-as-a-webcam-heres-how-ios/">https://www.makeuseof.com/tag/use-your-iphone-as-a-webcam-heres-how-ios/</a> </p>
+<hr/>
+<h4>需要 clone 個人倉儲時:</h4>
+<p>git clone --recurse-submodules 倉儲_url.git</p>
+<p>例如: git clone --recurse-submodules<span> </span><a href="https://github.com/mdecourse/wcmj2020.git">https://github.com/mdecourse/wcmj2020.git</a></p>
+<h4>現場直播的 audio 錄音設定</h4>
+<p>在電腦輔助設計室進行直播時, 由於現場有擴音設備, 因此採用 OBS 串流至 Youtube 的最佳收音並非從 Webcam 的麥克風, 而是從擴音器以 audio outpu 連接到電腦的麥克風插槽, 然後將 OBS 的 audio 設定為從電腦的麥克風收音.</p>
+<p>W7</p>
+<p>下載可攜程式系統</p>
+<p>利用 git 指令建立 cmsimde 網站<br/>W8</p>
+<p>重新下載<span> </span><a href="https://drive.google.com/open?id=1xDTDfcHU18ipqZNbOufMkSZqibqNeL2T">wcmj2020_tool.7z</a>, 檔案大小為 435 MB, 解開壓縮後為 1.8 GB (其中包括 Mypaint, Dia 與 OBS 等).</p>
+<p>學會利用 ShareX 與 OBS 拍攝螢幕操作影片, 並將個人維護倉儲與網站的過程影片放入個人網站中.<br/><br/></p>
 <h1>第九週實習</h1>
 <h2>電腦的軟硬體簡介</h2>
 <p>電腦的硬體<br/>主機<br/>機殼容納和保護主機營體的殼<br/>中央處理器(CPU)CPU主要工作是算術、運輯運算，解讀電腦內的每個指令來控制電腦的運作。<br/>電源(POWER)是電腦內接式元件電力來源的組件，他將市電轉換為直流電供給其他元件使用<br/>主機板:主機板的功能主要在承戴其插卡，所有電腦裡的東西東會接到主機板，他們之間要相互的傳資料也是經過主機板，之後再傳到對方，簡單的來說，他就像一個轉運站一樣。<br/>顯示卡顯示卡在電腦中主要作用就是城市運行時根據CPU提供的指令和有關數據，轉換成顯示器能夠接受的的文字和圖形顯示信號後通過螢幕顯示出來，簡單來說，就是把電腦計算出來的文字與圖形表現在顯示器上。<br/>記憶體記憶體的主要功用是占存資料，當它被使用時，系統可以從RAM上存取資料，而且需要電力來維持它的記憶。<br/>硬碟硬碟就是電腦中負責儲存資料的工具，他就一個資料庫。<br/>音效卡負責處理電腦音訊的處理讓我們可以聽到電腦發出的聲音<br/>光碟機顧名思義就是讀取光碟的工具。<br/>軟碟機又叫磁碟機，是一種儲存資料的工具。</p>
@@ -26,7 +58,13 @@
 <h2>網路架構與設定簡介</h2>
 <p>一般網路的架構可以分成防火牆、內部網路、外部網路<br/>防火牆可以想像是內部網路與外部網路的防禦邊界，不同網路間的資料流，可根據防火牆的設定，允許或封鎖特定程式等等<br/>內部網路組織內部進行資訊傳輸及資料轉換的網路區域，因不能直接連接到外部網路，所以安全性較高。<br/>外部網路外部自由傳說的網路區域，因資料傳遞並無受到過濾和限制，所以安全性最低</p>
 <p>win10電腦網路設定用操作表示</p>
-<p></p>
+<h1>W12-W13</h1>
+<p><span>Pelican Blog 內容與 Google Blogger 同步<br/></span></p>
+<p>利用 Windows 10 設定 -&gt; 選擇預設網頁瀏覽器, 使用 Google Chrome 作為預設瀏覽器.</p>
+<p>隨身程式系統必須安裝 <span>google-api-python-client 與 oauth2client</span><br/><br/>pip install google-api-python-client oauth2client<br/><br/>OAuth 2.0 client IDs 程式類別可以選擇 Desktop app<br/><br/>使用者完成 client_secrets.json 設定後, 必須將檔案存在倉儲目錄外部</p>
+<h1>W15-18</h1>
+<p>各組架設另外一個網站，個人去處理好各自得倉儲以及網站</p>
+<p><span> </span></p>
 <div class="yj6qo"></div>
 <div class="adL"></div>
 <div class="hi"></div>
