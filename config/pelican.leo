@@ -63,13 +63,25 @@
 <v t="leo.20180909205246.1"><vh>@clean 20200522.md</vh>
 <v t="leo.20200605160410.1"><vh>W10-11</vh></v>
 </v>
-<v t="leo.20180423103656.1"><vh>@clean 202005221.md</vh>
-<v t="leo.20200605082336.1"><vh>bad boy</vh></v>
-</v>
 <v t="leo.20200522153719.1"><vh>@clean 508331170522.md</vh>
-<v t="leo.20200605163536.1"><vh>W6-9</vh></v>
+<v t="leo.20200605163536.1"><vh>W6-W9</vh></v>
+<v t="leo.20200613063815.1"><vh>8984583042208546905</vh></v>
 </v>
-<v t="leo.20200529155446.1"><vh>@clean 508331170529.md</vh></v>
+<v t="leo.20200529155446.1"><vh>@clean 508331170529.md</vh>
+<v t="leo.20200613143054.1"><vh>W1-W2</vh></v>
+<v t="leo.20200613143157.1"><vh>3158930223006391807</vh></v>
+</v>
+<v t="leo.20200613071222.1"><vh>@clean 508331170613.md</vh>
+<v t="leo.20200613071354.1"><vh>W3-W5</vh></v>
+<v t="leo.20200613071523.1"><vh>1825020566798319727</vh></v>
+</v>
+<v t="leo.20200613071608.1"><vh>@clean 5083311720200613.md</vh>
+<v t="leo.20200613071749.1"><vh>W12-W13</vh></v>
+<v t="leo.20200613071833.1"><vh>1769888724436009255</vh></v>
+</v>
+<v t="leo.20200613071907.1"><vh>@clean 508331170613w15.md</vh>
+<v t="leo.20200613071956.1"><vh>W15</vh></v>
+</v>
 </v>
 </v>
 </v>
@@ -105,22 +117,6 @@ g.es("admin pelican Github 執行完畢")
 <t tx="leo.20180115115910.1"></t>
 <t tx="leo.20180115142025.1"></t>
 <t tx="leo.20180423103639.1"></t>
-<t tx="leo.20180423103656.1">@language md
----
-Title: 2020 WCMJ-2020-W10-課程簡介1
-Date: 2020-05-22 3:00
-Category: W10
-Tags: 2020
-Slug: 2020-Win10-W101
-Author: 50833117
----
-
-以 SSH 維護倉儲
-
-&lt;!-- PELICAN_END_SUMMARY --&gt;
-
-@others
-</t>
 <t tx="leo.20180909205246.1">@language md
 ---
 Title: 2020 WCMJ-2020-W10-課程簡介
@@ -138,7 +134,7 @@ Author: 50833117
 @others</t>
 <t tx="leo.20200522153719.1">@language md
 ---
-Title: 2020 WCMJ-2020-W10-課程簡介2
+Title: 2020 WCMJ-2020-W6-W9-課程簡介
 Date: 2020-05-22 3:00
 Category: W10
 Tags: 2020 0522 WCMJ2020W11
@@ -333,7 +329,7 @@ except(client.AccessTokenRefreshError):
     g.es("error")</t>
 <t tx="leo.20200529155446.1">@language md
 ---
-Title: 2020 WCMJ-2020-W10-課程簡介3
+Title: 2020 WCMJ-2020-W1-W2-課程簡介
 Date: 2020-05-22 3:00
 Category: W10
 Tags: 2020 0522 WCMJ2020W11
@@ -341,76 +337,11 @@ Slug: 2020-Win10-W13
 Author: 50833117
 ---
 
-是在哈囉</t>
-<t tx="leo.20200605082336.1">由於在電腦教室時採用純 IPv6 協定上網, 因此為了能夠在近端將倉儲改版資料推送到目前只接受 IPv4 協定連線的 github, 以下除了將原本以 https 對 github 連線, 改為以 ssh 協定連線外, 在 Windows 環境下必須利用 putty 與 plink, 設定 putty 格式的 .ppk 以及能夠同時支援 IPv4 與 IPv6 的代理主機.
+W1-W2
 
-設定步驟如下:
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 
-1. 下載 Putty 工具組
-
-從 https://www.chiark.greenend.org.uk/~sgtatham/putty/ 下載一般版, 或從 http://jakub.kotrla.net/putty/ 下載特殊的可攜版本.
-
-2. 利用 y:\portablegit\bin\sh.exe 進入 shell 命令環境後, 以 
-
-1
-ssh-keygen -t rsa -b 4096 -C "使用者學號"
-在 /y/home/.ssh 目錄下建立 id_rsa 與 id_rsa.pub 等 private key 與 public key
-
-之後以 SciTE 開啟 id_rsa.pub 後, 將此 public key 的內容, 以新增添加到 Github.com 帳號下 personal settings -&gt; SSH and GPG keys 頁面下.
-
-3. 接下來要利用 puttygen.exe 將 id_rsa 轉為 Putty 可以解讀的 .ppk 格式, 並修改隨身系統的啟動批次檔案, 指定利用 putty 目錄下的 plink 執行 git 指令的網路代理設定.
-
-修改啟動的 start.bat 加入下列設定:
- 
-set GIT_HOME=%Disk%:\portablegit\bin\
-set GIT_SSH=%Disk%:\putty\plink.exe
-4. 利用 puttygen.exe 載入第二步驟所建立的 private key, 也就是 id_rsa.
-
-開啟 puttygen 之後, 以右下方的 load 載入 id_rsa, 成功載入後, 利用 save private key 按鈕, 將已經轉為 putty 格式的 .ppk 存檔. 此一 .ppk 檔案必須在設定 putty 中 github.com session 時, 在 Connection-&gt;SSH-&gt;Auth 項目下, 將轉檔後的 .ppk 指向 private key file for authentication 欄位. 
-
-並在 Connection-&gt;Proxy 項目下, 指定 Proxy type: HTTP, 並將 IPv6 代理主機設為 ::53 或 ::42 埠號設為 3128.
-
-5. 之後確定 home 下的 .ssh 目錄中的 config 設定檔案為；
-# no proxy at home
-#ProxyCommand y:/PortableGit/mingw64/bin/connect.exe -H proxy.mde.nfu.edu.tw:3128 %h %p
-# set git_ssh=y:/putty/plink.exe with auth under putty github.com session setup
-ProxyCommand y:/putty/plink.exe github.com %h %p
-  
-Host github.com
-    User git
-    Port 22
-    Hostname github.com
-     
-    # for connect.exe need openssh key format
-    #IdentityFile "y:\home\.ssh\id_rsa_mdecourse"
-    # for plink.exe need rsa key format but set under putty github.com session
-    # plink.exe do not need the following setting
-    #IdentityFile "y:\home\.ssh\mdecourse_putty_private.ppk"
-  
-    TCPKeepAlive yes
-    IdentitiesOnly yes
-6. 最後再將 wcmj2020 倉儲中 .git 目錄下的 config 檔案中的連線協定, 由 https 改為採 ssh 連線: 範例如下:
-[core]
-    repositoryformatversion = 0
-    filemode = false
-    bare = false
-    logallrefupdates = true
-    symlinks = false
-    ignorecase = true
-[submodule]
-    active = .
-[remote "origin"]
-    #url = https://github.com/mdecourse/wcmj2020.git
-    url = git@github.com:mdecourse/wcmj2020.git
-    fetch = +refs/heads/*:refs/remotes/origin/*
-[branch "master"]
-    remote = origin
-    merge = refs/heads/master
-[submodule "cmsimde"]
-    url = https://github.com/mdecourse/cmsimde.git
-之後就可以透過近端的 .ppk private key 與 Github.com 上的 public key 對應, 無需輸入帳號密碼就可以進行 git push.
-
-W10 以 ssh 對倉儲連線設定說明影片 (登入 @gm 帳號後觀看)
+@others
 </t>
 <t tx="leo.20200605160410.1">由於在電腦教室時採用純 IPv6 協定上網, 因此為了能夠在近端將倉儲改版資料推送到目前只接受 IPv4 協定連線的 github, 以下除了將原本以 https 對 github 連線, 改為以 ssh 協定連線外, 在 Windows 環境下必須利用 putty 與 plink, 設定 putty 格式的 .ppk 以及能夠同時支援 IPv4 與 IPv6 的代理主機.
 
@@ -502,6 +433,99 @@ iPhone: https://www.makeuseof.com/tag/use-your-iphone-as-a-webcam-heres-how-ios/
 git clone --recurse-submodules 倉儲_url.git
 
 例如: git clone --recurse-submodules https://github.com/mdecourse/wcmj2020.git</t>
+<t tx="leo.20200613063815.1"></t>
+<t tx="leo.20200613071222.1">@language md
+---
+Title: 2020 WCMJ-2020-W3-W5-課程簡介
+Date: 2020-06-13 3:10
+Category: W10
+Tags: 2020 0522 WCMJ2020W15
+Slug: 2020-Win10-W15
+Author: 50833117
+---
+
+W3-W5
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200613071354.1">開個人網站跟推東西
+
+Y:反/data指的是Y槽的root根目錄  Y指的是Y槽，  &gt;為回應符號(pronpt sign)  反/為backslash反斜線  dir為顯示目錄內容的指令 cd tmp表示change directory到tmp子目錄
+git為分散式版次管理的指令名稱  git clone表示要使用git對遠端的倉儲url進行clone submodule子模組  phthon -m pip install flask-cors
+開個人網站:
+Y:l&gt;cd tmp
+&gt;cd wcmj2020
+&gt;cd cmsimde
+&gt;phthon wsgi.py
+PUSH
+Y:反/TMP反/WCMJ2020&gt;git add.
+&gt;git commit -m "add 添加之東西(可改)"
+&gt;git push</t>
+<t tx="leo.20200613071523.1"></t>
+<t tx="leo.20200613071608.1">@language md
+---
+Title: 2020 WCMJ-2020-W12-W13-課程簡介
+Date: 2020-06-13 3:10
+Category: W10
+Tags: 2020 0522 WCMJ2020W15
+Slug: 2020-Win10-W15
+Author: 50833117
+---
+
+W12-W13
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200613071749.1">Pelican Blog 內容與 Google Blogger 同步
+
+利用 Windows 10 設定 -&gt; 選擇預設網頁瀏覽器, 使用 Google Chrome 作為預設瀏覽器.
+
+隨身程式系統必須安裝 google-api-python-client 與 oauth2client
+
+pip install google-api-python-client oauth2client
+
+OAuth 2.0 client IDs 程式類別可以選擇 Desktop app
+
+使用者完成 client_secrets.json 設定後, 必須將檔案存在倉儲目錄外部</t>
+<t tx="leo.20200613071833.1"></t>
+<t tx="leo.20200613071907.1">@language md
+---
+Title: 2020 WCMJ-2020-W15-課程簡介
+Date: 2020-06-13 3:10
+Category: W10
+Tags: 2020 0522 WCMJ2020W15
+Slug: 2020-Win10-W15
+Author: 50833117
+---
+
+W15
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200613071956.1">各組架設另外一個網站，個人去處理好各自得倉儲以及網站
+
+</t>
+<t tx="leo.20200613143054.1">w1-w2
+type of computer
+1.super computer (超級電腦)    batch computation(批次運算)
+2.mainframe 伺服器主機 (cluster 叢集)
+3.server 伺服器 (實體，虛擬)
+4.Personal Computer
+5.micro controller (微控制器)  rasberry pi 樹莓派 (小PC) embedded 嵌入式
+6.Mobile phone (手機)
+課堂補充
+inter-net(網際,inter+network)==inter-national
+protocol(協定)
+tcp/ip == transmision control protocol / internet protocol
+IPv4 version(版本) 4 IP 4個區段，用「.」隔開
+IPv6 version 6 IP 8個區段，用「:」隔開
+中華電信 dns server 2001:b000:168::1
+dns == domain name server 符號名稱伺服器
+</t>
+<t tx="leo.20200613143157.1"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
